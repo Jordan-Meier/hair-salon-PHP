@@ -94,6 +94,4 @@
             $GLOBALS['DB']->exec("DELETE FROM clients WHERE stylist_id = {$this->getId()};");
         }
     }
-
-
 ?>

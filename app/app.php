@@ -109,6 +109,5 @@
         return $app['twig']->render('stylists.html.twig', array('stylist' => $stylist, 'clients' => $stylist->getClients()));
     });
 
-
     return $app;
 ?>
