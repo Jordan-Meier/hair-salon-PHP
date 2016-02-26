@@ -1,16 +1,16 @@
-# TITLE
+# Hair Salon Assessment
 
-## Epicodus PHP, Week 2: BDD Practice
+## Epicodus PHP, Week 3: Database Basics
 
 ### By: Jordan Meier
 
 ### Description
 
-
+This week's code review is a website where a potential hair salon owner/manager could track their stylists and their stylists' clients using a database to store the information.
 
 ### Known Bugs
 
-No known bugs at this time.
+When updating client information, the form does not seem to like apostrophes.
 
 ### Setup
 
@@ -27,12 +27,28 @@ php -S localhost:8000
 ```
 * Go to your browser and for the URL, type in: localhost:8000
 
+* To access the database, in a separate terminal window, navigate to your project folder and enter:
+```shell
+apachectl start
+```
+followed by:
+```shell
+mysql.server start
+mysql -uroot -uroot
+```
+* In a new window in your web browser, type in: localhost:8080/phpmyadmin
+
+* Login and click on the import tab. Under choose file, choose the file from the project folder ending in .sql and click go.
+
+* You can now access the hair_salon database!
 
 ### Technologies Used
 * html
 * CSS
 * PHP
 * Silex
+* MySQL
+* Apache
 * Twig
 * PHPUnit
 * Bootstrap v3.3.6
