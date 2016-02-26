@@ -10,7 +10,9 @@ This week's code review is a website where a potential hair salon owner/manager 
 
 ### Known Bugs
 
-When updating client information, the form does not seem to like apostrophes.
+* When updating client information, the form does not seem to like apostrophes.
+
+* There are some funky things going on with the personal stylesheet only loading on certain pages once information is submitted.
 
 ### Setup
 
@@ -41,6 +43,14 @@ mysql -uroot -uroot
 * Login and click on the import tab. Under choose file, choose the file from the project folder ending in .sql and click go.
 
 * You can now access the hair_salon database!
+
+* If sql file does not properly work, you can enter the following into your designated mySQL terminal:
+```shell
+CREATE DATABASE hair_salon;
+USE hair_salon;
+CREATE TABLE stylists (name VARCHAR (255), id serial PRIMARY KEY);
+CREATE TABLE clients (name VARCHAR (255), phone VARCHAR (255), stylist_id INT, id serial PRIMARY KEY);
+```
 
 ### Technologies Used
 * html
