@@ -18,7 +18,7 @@
         protected function tearDown()
         {
           Stylist::deleteAll();
-        //   Client::deleteAll();
+          Client::deleteAll();
         }
 
         function test_save()
@@ -50,6 +50,34 @@
 
             //Assert
             $this->assertEquals([$test_Stylist, $test_Stylist2], $result);
+        }
+
+        function test_getClients()
+        {
+            //Arrange
+            $name = "Shirley";
+            $id = null;
+            $test_stylist = new Stylist($name, $id);
+            $test_stylist->save();
+
+            $name = "Barbara";
+            $phone = "123-456-7899";
+            $stylist_id = $test_stylist->getId();
+            $test_client = new Client($id = null, $name, $phone, $stylist_id);
+            $test_client->save();
+
+
+            $name2 = "Buffy";
+            $phone2 = "126-456-7777";
+            $stylist_id2 = $test_stylist->getId();
+            $test_client2 = new Client($id2 = null, $name2, $phone2, $stylist_id2);
+            $test_client2->save();
+
+            //Act
+            $result = $test_stylist->getClients();
+
+            //Assert
+            $this->assertEquals([$test_client, $test_client2], $result);
         }
 
         function test_deleteAll()
@@ -123,6 +151,29 @@
             //Assert
             $this->assertEquals([$test_stylist2], Stylist::getAll());
         }
+
+        // function testDelete_CuisineRestaurants()
+        // {
+        //     //Arrange
+        //     $name = "Shirley";
+        //     $id = null;
+        //     $test_cuisine = new Cuisine($name, $id);
+        //     $test_cuisine->save();
+        //
+        //     $name = "Javiers";
+        //     $happy_hour = 0;
+        //     $address = "123 NW street";
+        //     $cuisine_id = $test_cuisine->getId();
+        //     $test_restaurant = new Restaurant($id = null, $name, $happy_hour, $address, $cuisine_id);
+        //     $test_restaurant->save();
+        //
+        //
+        //     //Act
+        //     $test_cuisine->delete();
+        //
+        //     //Assert
+        //     $this->assertEquals([], Restaurant::getAll());
+        // }
 
 
 
