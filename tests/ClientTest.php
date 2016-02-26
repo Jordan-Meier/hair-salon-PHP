@@ -127,6 +127,31 @@
             $this->assertEquals($test_client, $result);
         }
 
+        function testUpdateClient()
+        {
+            //Arrange
+            $name = 'Shirley';
+            $test_Stylist = new Stylist($name);
+            $test_Stylist->save();
+
+            $name = "Barbara";
+            $phone = "123-456-7899";
+            $stylist_id = $test_Stylist->getId();
+            $test_client = new Client($id = null, $name, $phone, $stylist_id);
+            $test_client->save();
+
+            $new_name = "Georgia";
+            $new_phone = "678-987-1234";
+
+
+            //Act
+            $test_client->updateClient($new_name, $new_phone);
+            // $result = Client::getAll();
+
+            //Assert
+            $this->assertEquals(["Georgia", "678-987-1234"], [$test_client->getName(), $test_client->getPhone()]);
+        }
+
 
     }
 

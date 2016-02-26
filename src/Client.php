@@ -88,6 +88,14 @@
             return $found_client;
         }
 
+        function updateClient($new_name, $new_phone)
+        {
+            $GLOBALS['DB']->exec("UPDATE clients SET name = '{$new_name}', phone = '{$new_phone}' WHERE id = {$this->getId()};");
+
+            $this->setName($new_name);
+            $this->setPhone($new_phone);
+        }
+
     }
 
 ?>
