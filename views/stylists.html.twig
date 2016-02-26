@@ -1,48 +1,47 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css'>
-    <title></title>
-    <title>Curly Salon</title>
-</head>
-<body>
-    <h1>{{ stylist.getName }}</h1>
+    <head>
+        <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css'>
+        <title>Curly Salon</title>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Curl Salon</h1>
+        </div><hr>
+        <div class="container">
+            <h2>{{ stylist.getName }}</h2>
 
-    {% if clients is not empty %}
-        <p>Here are the clients:</p>
-        <ul>
-            {% for client in clients %}
-                <li>{{ client.getName }}</li>
-                <ul>
-                    <li>Phone #: {{ client.getPhone }}</li>
-                </ul>
-                <form action="/clients/{{ client.getId }}/edit" >
-                    <button class="btn btn-success" type="submit" name="button">Edit this client</button>
-                </form>
-            {% endfor %}
-        </ul>
-        {% else %}
-            <p>
-                no clients found
-            </p>
-        <!-- <form action="/delete_clients/{{ client.getId }}" method="post">
-            <button type="submit" name="button">Delete clients</button>
-        </form> -->
-    {% endif %}
+            {% if clients is not empty %}
+                <h3>Here are {{ stylist.getName }}'s clients:</h3>
+                    <div class="well">
+                        {% for client in clients %}
+                            <h4><strong>{{ client.getName }}</strong></h4>
+                            <ul>
+                                <li>Phone #: {{ client.getPhone }}</li>
+                            </ul>
+                            <form action="/clients/{{ client.getId }}/edit" >
+                                <button class="btn btn-success" type="submit" name="button">Edit this client</button>
+                            </form>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <p>
+                        no clients found
+                    </p>
+            {% endif %}
+            <h3>Add a client</h3>
+            <form action='/clients' method='post'>
+                <input id="stylist_id" name="stylist_id" type="hidden" value="{{ stylist.getId() }}">
+                <label for='name'>Client Name:</label>
+                <input id='name' name='name' type='text'><br>
+                <label for='phone'>Phone #:</label>
+                <input id='phone' name='phone' type='text'><br><br>
 
-    <h2>Add a client</h2>
+                <button class="btn btn-primary" type='submit'>Add Client</button><br><br>
+            </form>
+            <h4><a href="/stylists/{{ stylist.getId }}/edit">Edit this stylist</a></h4>
 
-    <form action='/clients' method='post'>
-        <input id="stylist_id" name="stylist_id" type="hidden" value="{{ stylist.getId() }}">
-        <label for='name'>Client Name:</label>
-        <input id='name' name='name' type='text'><br>
-        <label for='phone'>Phone #:</label>
-        <input id='phone' name='phone' type='text'><br><br>
-
-        <button class="btn btn-primary" type='submit'>Add Client</button>
-    </form>
-    <p><a href="/stylists/{{ stylist.getId }}/edit">Edit this stylist</a></p>
-
-    <p><a href='/'>Home</a></p>
-</body>
+            <h4><a href='/'>Home</a></h4>
+        </div>
+    </body>
 </html>
