@@ -152,28 +152,28 @@
             $this->assertEquals([$test_stylist2], Stylist::getAll());
         }
 
-        // function testDelete_CuisineRestaurants()
-        // {
-        //     //Arrange
-        //     $name = "Shirley";
-        //     $id = null;
-        //     $test_cuisine = new Cuisine($name, $id);
-        //     $test_cuisine->save();
-        //
-        //     $name = "Javiers";
-        //     $happy_hour = 0;
-        //     $address = "123 NW street";
-        //     $cuisine_id = $test_cuisine->getId();
-        //     $test_restaurant = new Restaurant($id = null, $name, $happy_hour, $address, $cuisine_id);
-        //     $test_restaurant->save();
-        //
-        //
-        //     //Act
-        //     $test_cuisine->delete();
-        //
-        //     //Assert
-        //     $this->assertEquals([], Restaurant::getAll());
-        // }
+        function testDelete_StylistClients()
+        {
+            //Arrange
+            $name = "Shirley";
+            $id = null;
+            $test_stylist = new Stylist($name, $id);
+            $test_stylist->save();
+
+
+            $name = "Barbara";
+            $phone = "123-456-7899";
+            $stylist_id = $test_stylist->getId();
+            $test_client = new Client($id = null, $name, $phone, $stylist_id);
+            $test_client->save();
+
+
+            //Act
+            $test_stylist->delete();
+
+            //Assert
+            $this->assertEquals([], Client::getAll());
+        }
 
 
 
