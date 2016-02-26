@@ -5,29 +5,34 @@
         <title>Curly Salon</title>
     </head>
     <body>
-        <h1>Welcome to Curly Salon</h1>
+        <div class="container">
+            <h1>Welcome to Curly Salon</h1>
+        </div>
+        <hr>
+        <div class="container">
+            <h3>Add a new Stylist:</h3>
 
-        <p>Add a new Stylist:</p>
+            <form action="/stylists" method="post">
+                <label for="name">Stylist name:</label>
+                <input id="name" name="name" type="text"><br><br>
 
-        <form action="/stylists" method="post">
-            <label for="name">Stylist name:</label>
-            <input id="name" name="name" type="text">
-
-            <button type="submit">Add Stylist</button>
-        </form>
-
-        {% if stylists is not empty %}
-            <p>Here are all of your stylists:</p>
-            <ul>
-                {% for stylist in stylists %}
-                    <li><a href="/stylists/{{ stylist.getId }}">{{ stylist.getName }}</a></li>
-                {% endfor %}
-            </ul>
-            <form action="/delete_stylists" method="post">
-                <button type="submit" name="button">Delete All Stylists</button>
+                <button class="btn btn-success" type="submit">Add Stylist</button>
             </form>
-        {% else %}
-          <p>There are no stylists added yet!</p>
-        {% endif %}
+
+            {% if stylists is not empty %}
+                <h4>Here are all of your stylists:</h4>
+                <ul>
+                    {% for stylist in stylists %}
+                        <li><a href="/stylists/{{ stylist.getId }}">{{ stylist.getName }}</a></li>
+                    {% endfor %}
+                </ul>
+                <form action="/delete_stylists" method="post">
+                    <button class="btn btn-danger" type="submit" name="button">Delete All Stylists</button>
+                </form>
+            {% else %}
+              <h4>There are no stylists added yet!</h4>
+            {% endif %}
+        </div>
+
     </body>
 </html>
