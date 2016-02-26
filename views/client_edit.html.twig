@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css'>
+        <title>Curly Salon</title>
+    </head>
+    <body>
+        <h1>Update this client </h1>
+
+        <form action="/client/{{ client.getId }}" method="post">
+          <input name="_method" type="hidden" value="patch">
+
+          <label for="name">Rename your client:</label>
+          <input id="name" name="name" type="text" value= "{{ client.getName }}"><br>
+          <label for="phone">Change client phone #:</label>
+          <input id="phone" name="phone" type="text" value= "{{ client.getPhone }}">
+
+          <button class="btn btn-primary" type="submit">Update</button>
+        </form>
+        <form action="/client/{{ client.getId}}/delete" method="post">
+          <input name="_method" type="hidden" value="delete">
+
+          <button class="btn btn-danger" type="submit">Delete This Client</button>
+        </form>
+
+    </body>
+</html>
