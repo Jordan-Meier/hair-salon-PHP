@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css'>
+    <title></title>
+    <title>Curly Salon</title>
+</head>
+<body>
+    <h1>{{ stylist.getName }}</h1>
+
+    {% if clients is not empty %}
+        <p>Here are the clients:</p>
+        <ul>
+            {% for client in clients %}
+                <li>{{ client.getName }}</li>
+                <ul>
+                    <li>Happy Hour: {{ client.getHappyHour }}</li>
+                    <li>Address: {{ client.getAddress }}</li>
+                </ul>
+                <form action="/clients/{{ client.getId }}/edit" >
+                    <button type="submit" name="button">Edit this client</button>
+                </form>
+            {% endfor %}
+        </ul>
+        {% else %}
+            <p>
+                no clients found
+            </p>
+        <!-- <form action="/delete_clients/{{ client.getId }}" method="post">
+            <button type="submit" name="button">Delete clients</button>
+        </form> -->
+    {% endif %}
+
+    <h4>Add a client</h4>
+
+    <form action='/clients' method='post'>
+        <input id="stylist_id" name="stylist_id" type="hidden" value="{{ stylist.getId() }}">
+        <label for='name'>Restaurant Name</label>
+        <input id='name' name='name' type='text'><br>
+        <label for='name'>Happy Hour?</label>
+        <select name= "happy_hour">
+          <option value="1">Yes</option>
+          <option value="0">No</option>
+        </select><br>
+        <label for='address'>Address</label>
+        <input id='address' name='address' type='text'><br><br>
+
+        <button type='submit'>Add Client</button>
+    </form>
+    <p><a href="/stylists/{{ stylist.getId }}/edit">Edit this stylist</a></p>
+
+    <p><a href='/'>Home</a></p>
+</body>
+</html>
