@@ -78,6 +78,11 @@
         return $app['twig']->render('stylists.html.twig', array('stylist' => $stylist, 'clients' => $stylist->getClients()));
     });
 
+    $app->post("/delete_clients", function() use ($app) {
+       Client::deleteAll();
+       return $app['twig']->render('stylists.html.twig');
+   });
+
     $app->get("/clients/{id}/edit", function($id) use ($app) {
         $client = Client::find($id);
         return $app['twig']->render('client_edit.html.twig', array('client' => $client));
