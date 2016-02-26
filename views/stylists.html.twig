@@ -14,11 +14,10 @@
             {% for client in clients %}
                 <li>{{ client.getName }}</li>
                 <ul>
-                    <li>Happy Hour: {{ client.getHappyHour }}</li>
-                    <li>Address: {{ client.getAddress }}</li>
+                    <li>Phone #: {{ client.getPhone }}</li>
                 </ul>
                 <form action="/clients/{{ client.getId }}/edit" >
-                    <button type="submit" name="button">Edit this client</button>
+                    <button class="btn btn-success" type="submit" name="button">Edit this client</button>
                 </form>
             {% endfor %}
         </ul>
@@ -40,7 +39,7 @@
         <label for='phone'>Phone #:</label>
         <input id='phone' name='phone' type='text'><br><br>
 
-        <button type='submit'>Add Client</button>
+        <button class="btn btn-primary" type='submit'>Add Client</button>
     </form>
     <p><a href="/stylists/{{ stylist.getId }}/edit">Edit this stylist</a></p>
 
