@@ -6,6 +6,8 @@
 
     $app = new Silex\Application();
 
+    //   $app['debug'] = true;
+
     $server = 'mysql:host=localhost;dbname=hair_salon';
     $username = 'root';
     $password = 'root';
@@ -78,9 +80,10 @@
         return $app['twig']->render('stylists.html.twig', array('stylist' => $stylist, 'clients' => $stylist->getClients()));
     });
 
-    $app->post("/delete_clients", function() use ($app) {
-       Client::deleteAll();
-       return $app['twig']->render('stylists.html.twig');
+   $app->delete("/stylist/{id}/clients_delete", function($id) use ($app) {
+       $stylist = Stylist::find($id);
+       $stylist->deleteClients();
+       return $app['twig']->render('stylists.html.twig', array('stylist' => $stylist, 'clients' => $stylist->getClients()));
    });
 
     $app->get("/clients/{id}/edit", function($id) use ($app) {

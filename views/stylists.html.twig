@@ -42,8 +42,10 @@
             </form>
             <h4><a href="/stylists/{{ stylist.getId }}/edit">Edit this stylist</a></h4>
 
-            <form action="/delete_clients" method="post">
-                <button class="btn btn-danger" type="submit" name="button">Delete ALL Clients for this Stylist</button>
+            <form action="/stylist/{{ stylist.getId}}/clients_delete" method="post">
+              <input name="_method" type="hidden" value="delete">
+
+              <button class="btn btn-danger" type="submit">Delete ALL Client for this stylist</button>
             </form>
 
             <h4><a href='/'>Home</a></h4>
