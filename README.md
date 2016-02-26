@@ -8,11 +8,13 @@
 
 This week's code review is a website where a potential hair salon owner/manager could track their stylists and their stylists' clients using a database to store the information.
 
+![Alt text](web/images/screenshot.jpg)
+
 ### Known Bugs
 
 * When updating client information, the form does not seem to like apostrophes.
 
-* There are some funky things going on with the personal stylesheet only loading on certain pages once information is submitted.
+* There are some funky things going on with the personal stylesheet only loading on certain pages once information is submitted. Think it has something to do with routes that have more than one '/'.
 
 ### Setup
 
