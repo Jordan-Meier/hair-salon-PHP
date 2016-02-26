@@ -96,6 +96,11 @@
             $this->setPhone($new_phone);
         }
 
+        function delete()
+        {
+            $GLOBALS['DB']->exec("DELETE FROM clients WHERE stylist_id = {$this->getStylistId()};");
+        }
+
     }
 
 ?>

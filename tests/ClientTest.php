@@ -152,6 +152,27 @@
             $this->assertEquals(["Georgia", "678-987-1234"], [$test_client->getName(), $test_client->getPhone()]);
         }
 
+        function testDeleteClients()
+        {
+            //Arrange
+            $name = 'Shirley';
+            $test_Stylist = new Stylist($name);
+            $test_Stylist->save();
+
+            $name = "Barbara";
+            $phone = "123-456-7899";
+            $stylist_id = $test_Stylist->getId();
+            $test_client = new Client($id = null, $name, $phone, $stylist_id);
+            $test_client->save();
+
+
+            //Act
+            $test_client->delete();
+
+            //Assert
+            $this->assertEquals([], Client::getAll());
+        }
+
 
     }
 
