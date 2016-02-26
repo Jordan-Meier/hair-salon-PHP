@@ -5,34 +5,29 @@
         <title></title>
     </head>
     <body>
-        <div class="container">
-            <h1></h1>
-            <form action="/rock_paper_scissors">
-                <div class="form-group">
-                    <label for="input_1">Player 1</label>
-                        <select name= "input_1" id="input_1" class="form-control">
-                            <option>rock</option>
-                            <option>paper</option>
-                            <option>scissors</option>
-                        </select><br>
-                    <label for="input_2">Player 2</label>
-                        <select name= "input_2" id="input_2" class="form-control">
-                            <option>rock</option>
-                            <option>paper</option>
-                            <option>scissors</option>
-                        </select><br>
-                </div>
-                <button class="btn btn-success" type="submit">Play!</button>
-            </form>
-            <hr>
-            <br>
-            <div class="well">
-                <h3>Who won?</h3>
-                <p>
-                    {{ results }}
-                </p>
+        <h1>Welcome to Curly Salon</h1>
 
-            </div>
-        </div>
+        <p>Add a new Stylist:</p>
+
+        <form action="/stylists" method="post">
+            <label for="name">Stylist name:</label>
+            <input id="name" name="name" type="text">
+
+            <button type="submit">Add Stylist</button>
+        </form>
+
+        {% if stylists is not empty %}
+            <p>Here are all of your stylists:</p>
+            <ul>
+                {% for stylist in stylists %}
+                    <li><a href="/stylists/{{ stylist.getId }}">{{ stylist.getName }}</a></li>
+                {% endfor %}
+            </ul>
+            <form action="/delete_stylists" method="post">
+                <button type="submit" name="button">Delete All Stylists</button>
+            </form>
+        {% else %}
+          <p>There are no stylists added yet!</p>
+        {% endif %}
     </body>
 </html>
